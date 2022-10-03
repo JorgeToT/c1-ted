@@ -1,37 +1,31 @@
-import { Box, Button, Flex, Image } from "@chakra-ui/react";
+import { Box, Button, Flex } from "@chakra-ui/react";
 import { FiX } from "react-icons/fi";
-import { SearchBox, Hits, Highlight } from "react-instantsearch-hooks-web";
-
-function Hit({ hit }) {
-  return (
-    <Box>
-      <Image src={hit.image_url} alt={hit.name} />
-      <h1>
-        <Highlight attribute="name" hit={hit} />
-      </h1>
-      <p>
-        <Highlight attribute="description" hit={hit} />
-      </p>
-    </Box>
-  );
-}
+import { SearchBox, Hits, Configure } from "react-instantsearch-hooks-web";
+import BoxOfData from "./BoxOfData";
+import GridSection from "./Grid";
+import "../index.css";
 
 const Search = (props) => {
   return (
     <Box>
+      <Configure hitsPerPage={6} />
       <Flex alignItems={"center"}>
-        <SearchBox style={{ fontSize: "65px" }} />
+        <SearchBox
+          placeholder="Search for Talks, Speakers..."
+          submitIconComponent={() => null}
+          resetIconComponent={() => null}
+          className="MyCustomSearchBox"
+        />
         <Button
           bg={"whiteAlpha.400"}
           onClick={() => props.setView("Main")}
           height={"fit-content"}
           _hover={{ bg: "whiteAlpha.500" }}
         >
-          <FiX color="#555" size={"150px"} strokeWidth="0.2px" />
+          <FiX color="#666" size={"150px"} strokeWidth="0.2px" />
         </Button>
       </Flex>
-
-      <Hits hitComponent={Hit} />
+      <GridSection />
     </Box>
   );
 };
