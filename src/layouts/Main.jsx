@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import HeaderSearch from "../components/HeaderSearch";
 import Search from "../components/Search";
+import Section from "../components/Section";
 import { Box } from "@chakra-ui/react";
 import { useState } from "react";
 
@@ -11,11 +12,12 @@ const Main = () => {
       {view === "Main" ? (
         <Box>
           <Header setView={setView} />
+          <Section />
         </Box>
       ) : (
         <Box>
-          <HeaderSearch setView={setView} />
-          <Search />
+          <HeaderSearch />
+          <Search setView={setView} />
         </Box>
       )}
     </Box>

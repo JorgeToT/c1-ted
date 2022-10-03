@@ -66,6 +66,7 @@ const Header = (props) => {
             bg={"whiteAlpha.400"}
             border="ActiveBorder"
             onClick={() => props.setView("Search")}
+            _hover={{ bg: "whiteAlpha.500" }}
           >
             <Flex
               alignItems={"center"}
